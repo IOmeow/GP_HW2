@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private Transform player_trans;
+    [HideInInspector] public Transform player_trans;
     [HideInInspector] public Vector3 player_pos => player_trans.position;
 
     [SerializeField] private GameObject shooter_pref;
