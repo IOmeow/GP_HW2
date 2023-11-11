@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]
     private float movespeed = 7f;
-    [SerializeField]
-    private float jumpForce = 8f;
+    // [SerializeField]
+    // private float jumpForce = 8f;
     [SerializeField]
     private bool isControllable = true;
     Vector3 playerMovement;

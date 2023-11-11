@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e56b34589bd9774fa6e761208ede477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2502326699378083043, guid: 306391ce4f2e2394b80bb937243e8323, type: 3}
+  Player: {fileID: 8862964243571687878, guid: d7b39407c63e1554ab9539408bc140e5, type: 3}
   healingBlock: {fileID: 3893833365589188042, guid: a98aa6b1115e8494c895466d1c26d367, type: 3}
   numbersOfHealingBlocks: 10
   canvas: {fileID: 3791515044962551505, guid: 2d389a443657b394ba6d83b5b34137d4, type: 3}
   fadeOutTime: 1
-  level1_enemy: {fileID: 1157071808887230192, guid: 2074b55d269e58a48832a2cd778969c4, type: 3}
+  level1_enemy: {fileID: 5998034229637603525, guid: 35b3fc8b3812bcc4a9dea7c75c870047, type: 3}
   level1_enemyCount: 10
   level1_rocks:
   - {fileID: 1000012968262300, guid: 30b99e7dc1382e346a7f9789de00de5e, type: 3}
@@ -59,9 +59,9 @@ MonoBehaviour:
   - {fileID: 1000013569322780, guid: 5d10ae558efe6a64d96e5b4d02ec6792, type: 3}
   - {fileID: 1000011143488790, guid: a649302f8407dd9469e2c5b67b4a0674, type: 3}
   level1_rockCount: 10
-  level2_enemy: {fileID: 2594341931292520084, guid: ea1c12a2cbffb4f4c80252bbddf64607, type: 3}
+  level2_enemy: {fileID: 3941765273117345776, guid: 54cea88e18ccf1c42b54446e735ef9be, type: 3}
   level2_enemyCount: 10
   level2_pillar: {fileID: 1660479392756500, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
   level2_pillarCount: 10
-  level3_enemy: {fileID: 6143839091064870748, guid: 1ffaa82cd31d3f841b84b5c058171a17, type: 3}
+  level3_enemy: {fileID: 3253726156485794920, guid: e5057cb2392c6604b9180c481bcc25bc, type: 3}
   level3_enemyCount: 10

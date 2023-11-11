@@ -17,6 +17,9 @@ public class bird_controller : monster
     public GameObject hiteffect;
     private float hitcd;
 
+    HealthManager health;
+    SoundManager sound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,9 @@ public class bird_controller : monster
         hitcd = 0;
         // damage, hp, speed, see_range
         Init(1, 3, 8, 5);
+
+        health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+        sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
 
     void Update() {
@@ -74,6 +80,7 @@ public class bird_controller : monster
 
         rb.velocity = dir * speed;
         attacking = true;
+        sound.playBirdSE();
     }
     void OnTriggerStay(Collider collision)
     {
@@ -81,6 +88,7 @@ public class bird_controller : monster
         {
             hitcd=1f;
             Instantiate(hiteffect,new Vector3(collision.transform.position.x,collision.transform.position.y+1f,collision.transform.position.z),Quaternion.identity);
+            health.TakeDamage(damage);
         }
     }
 }

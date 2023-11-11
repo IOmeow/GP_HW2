@@ -7,6 +7,7 @@ public class goblin_controller : monster
 {
     private Rigidbody rb;
     private Animator animator;
+    SoundManager sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class goblin_controller : monster
         // damage, hp, speed, see_range
         Init(3, 5, 2, 5);
         animator.SetBool("attack",false);
+        sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
 
     void FixedUpdate() {
@@ -46,6 +48,7 @@ public class goblin_controller : monster
         if(collision.gameObject.tag=="Player")
         {
             animator.SetBool("attack",true);
+            sound.playGoblinSE();
         }
     }
     void OnCollisionExit(Collision collision)

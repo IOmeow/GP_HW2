@@ -15,9 +15,11 @@ public class characterevent : MonoBehaviour
     float Timer=0;
     public float additionalAngle = 30.0f;
     bool attack;
+    SoundManager sound;
     void Start()
     {
         player = gameObject;
+        sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class characterevent : MonoBehaviour
             animator.SetBool("attack",true);
             Timer = 0.75f;
             ThirdPersonController.MoveSpeed=0;
+            sound.playAttackSE();
         }
         else if(Timer>0&&currentState.IsName("normal attack"))
         {

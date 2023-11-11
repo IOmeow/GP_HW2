@@ -13,7 +13,7 @@ public class HealingBlockScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals(Player.tag))
+        if (collision.gameObject.tag.Equals("Player"))
         {
             health.Heal(healAmount);
             Destroy(gameObject);

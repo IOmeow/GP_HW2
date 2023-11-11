@@ -17,11 +17,14 @@ public class shooter_controller : monster
     public GameObject hand;
     public Animator animator;
 
+    SoundManager sound;
+
     // Start is called before the first frame update
     void Start()
     {
         // damage, hp, speed, see_range
         Init(1, 3, 0, 5);
+        sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
 
     void FixedUpdate() {
@@ -73,5 +76,7 @@ public class shooter_controller : monster
 
         // give the bullet initial velocity
         bullet_rb.velocity = transform.forward * bullet_speed;
+        
+        sound.playShooterSE();
     }
 }

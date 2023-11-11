@@ -181,8 +181,8 @@ public class LevelManagerScript : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3 randomLocation = new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2), 1.5f, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2));
-            GameObject newPillar = Instantiate(enemy, randomLocation, Quaternion.identity);
+            Vector3 randomLocation = new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2), 0.5f, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2));
+            GameObject newEnemy = Instantiate(enemy, randomLocation, Quaternion.identity);
         }
     }
     private void fadeinout()
@@ -245,7 +245,7 @@ public class LevelManagerScript : MonoBehaviour
         fadeout = true;
 
     }
-    public void KillEnemy(){
+    public void KillEnemy(){    //敵人死亡更新
         killedCount++;
         killedCountText.text = killedCount.ToString();
         if(killedCount==enemyCount)NextLevel();

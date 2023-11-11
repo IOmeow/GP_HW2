@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void playGoblinSE(){
-        SE.PlayOneShot(goblinSE);
+        if(!SE.isPlaying)SE.PlayOneShot(goblinSE);
     }
     public void playShooterSE(){
         SE.PlayOneShot(shooterSE);
