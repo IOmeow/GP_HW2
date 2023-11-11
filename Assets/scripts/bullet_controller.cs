@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bullet_controller : MonoBehaviour
 {
+    public GameObject hiteffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,6 +13,10 @@ public class bullet_controller : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player") Destroy(gameObject);
+        if(other.tag == "Player")
+        {
+            Instantiate(hiteffect,transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
