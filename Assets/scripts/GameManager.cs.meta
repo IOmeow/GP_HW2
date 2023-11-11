@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d5f2da29ee009b04889d0ca59464b912
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player_trans: {fileID: 8094028015039952324, guid: ebbc0b43a56e4634ea8dd40c1cb86854, type: 3}
+  - shooter_pref: {instanceID: 0}
+  - bird_pref: {instanceID: 0}
+  - goblin_pref: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
