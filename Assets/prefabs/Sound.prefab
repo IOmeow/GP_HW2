@@ -44,9 +44,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 234459f4c59fd314a8bbe32266f1e84d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -240,13 +240,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM: {fileID: 8549911557860683894}
   SE: {fileID: 9169949878606026281}
-  BGM0: {fileID: 0}
-  BGM1: {fileID: 0}
-  BGM2: {fileID: 0}
-  BGM3: {fileID: 0}
+  BGM0: {fileID: 8300000, guid: 234459f4c59fd314a8bbe32266f1e84d, type: 3}
+  BGM1: {fileID: 8300000, guid: 42c29a9564f31dc4285a4bda5b967d88, type: 3}
+  BGM2: {fileID: 8300000, guid: 9d76e9c5b87ecef4f934b84273ae8e49, type: 3}
+  BGM3: {fileID: 8300000, guid: 0c692dadc0d963747a03861d4b25a532, type: 3}
   cureSE: {fileID: 8300000, guid: 3d6d7a44435f4934e805c0274a91a354, type: 3}
   dieSE: {fileID: 8300000, guid: b2ad795cf82bfdc42ad552382c801ecf, type: 3}
-  hurtSE: {fileID: 0}
-  transportSE: {fileID: 0}
-  attackSE: {fileID: 0}
+  hurtSE: {fileID: 8300000, guid: 92f0ad976bda72546b96758697974e53, type: 3}
+  teleportSE: {fileID: 8300000, guid: b8b61467b6b3a5b44958a988d093846b, type: 3}
+  attackSE: {fileID: 8300000, guid: 0d55985b1ee60f24b81156885db18d88, type: 3}
   victorySE: {fileID: 8300000, guid: 93bcc5401aa786f48a3eaa864c908535, type: 3}
+  goblinSE: {fileID: 8300000, guid: 251eba87cb54493439d79691d1ed68bc, type: 3}
+  shooterSE: {fileID: 8300000, guid: b40c5fd334453344abd8c81a1d84cb26, type: 3}
+  birdSE: {fileID: 8300000, guid: 7e80c348cb1e60743aa4ad3ee9930103, type: 3}

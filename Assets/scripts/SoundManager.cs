@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    private static SoundManager _instance;
     public AudioSource BGM, SE;
     public AudioClip BGM0, BGM1, BGM2, BGM3;
-    public AudioClip cureSE, dieSE, hurtSE, transportSE, attackSE, victorySE;
+    public AudioClip cureSE, dieSE, hurtSE, teleportSE, attackSE, victorySE;
+    public AudioClip goblinSE, shooterSE, birdSE;
+
+    void Start(){
+        if (_instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else _instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void playBGM(int stage){
         switch(stage){
@@ -42,19 +54,25 @@ public class SoundManager : MonoBehaviour
     public void playHurtSE(){
         SE.PlayOneShot(hurtSE);
     }
-    public void playTransportSE(){
-        SE.PlayOneShot(transportSE);
+    public void playTeleportSE(){
+        SE.PlayOneShot(teleportSE);
     }
     public void playAttackSE(){
         SE.PlayOneShot(attackSE);
     }
 
     public void playVictorySE(){
-        BGM.volume = 0.1f;
+        BGM.Stop();
         SE.PlayOneShot(victorySE);
-        Invoke("setBGM", 10);
     }
-    private void setBGM(){
-        BGM.volume = 1f;
+
+    public void playGoblinSE(){
+        SE.PlayOneShot(goblinSE);
+    }
+    public void playShooterSE(){
+        SE.PlayOneShot(shooterSE);
+    }
+    public void playBirdSE(){
+        SE.PlayOneShot(birdSE);
     }
 }

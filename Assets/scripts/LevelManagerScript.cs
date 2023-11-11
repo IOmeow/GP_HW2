@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManagerScript : MonoBehaviour
 {
@@ -66,6 +67,15 @@ public class LevelManagerScript : MonoBehaviour
     private CanvasGroup currentCanvasGroup;
     private int currentLevel = 1;
     private GameObject floor;
+
+    private Text enemyCountText;
+    private Text killedCountText;
+    private int killedCount, enemyCount;
+    SoundManager sound;
+    private GameObject win;
+    void Awake(){
+        sound = GameObject.Find("Sound").GetComponent<SoundManager>();
+    }
     void Start()
     {
         if (_instance)
@@ -100,17 +110,31 @@ public class LevelManagerScript : MonoBehaviour
 
         if (scene.name == "Level1")
         {
+            currentLevel = 1;
             createRocks();
             createEnemies(level1_enemy, level1_enemyCount);
+            initialKill(level1_enemyCount);
+            sound.playBGM(1);
         }
         if (scene.name == "Level2")
         {
             currentLevel = 2;
             createPillars();
+            createEnemies(level2_enemy, level2_enemyCount);
+            initialKill(level2_enemyCount);
+            sound.playTeleportSE();
+            sound.playBGM(2);
         }
         else if (scene.name == "Level3")
         {
             currentLevel = 3;
+            createEnemies(level3_enemy, level3_enemyCount);
+            initialKill(level3_enemyCount);
+            sound.playTeleportSE();
+            sound.playBGM(3);
+
+            win = GameObject.Find("Win");
+            win.SetActive(false);
         }
 
         fadein = true;
@@ -157,7 +181,7 @@ public class LevelManagerScript : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3 randomLocation = new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2), 0, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2));
+            Vector3 randomLocation = new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2), 1.5f, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2));
             GameObject newPillar = Instantiate(enemy, randomLocation, Quaternion.identity);
         }
     }
@@ -192,20 +216,38 @@ public class LevelManagerScript : MonoBehaviour
                 else
                 {
                     //Show win screen
+                    fadeout = false;
+                    win.SetActive(true);
+                    sound.playVictorySE();
                 }
             }
         }
+    }
+    private void initialKill(int count){
+        enemyCountText = GameObject.Find("enemy_count").GetComponent<Text>();
+        killedCountText = GameObject.Find("killed_count").GetComponent<Text>();
+        killedCount = 0;
+        killedCountText.text = "0";
+        enemyCount = count;
+        enemyCountText.text = enemyCount.ToString();
     }
     private void Update()
     {
         fadeinout();
         if (Input.GetKeyDown(KeyCode.N))
             NextLevel();
+        if (Input.GetKeyDown(KeyCode.M))
+            KillEnemy();
     }
-    public void NextLevel()
+    private void NextLevel()
     {
         print("NextLevel");
         fadeout = true;
 
+    }
+    public void KillEnemy(){
+        killedCount++;
+        killedCountText.text = killedCount.ToString();
+        if(killedCount==enemyCount)NextLevel();
     }
 }
