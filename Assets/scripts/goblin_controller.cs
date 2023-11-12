@@ -58,4 +58,5 @@ public class goblin_controller : monster
             animator.SetBool("attack",false);
         }
     }
+  
 }

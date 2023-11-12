@@ -27,7 +27,7 @@ public class bird_controller : monster
         animator = GetComponent<Animator>();
         hitcd = 0;
         // damage, hp, speed, see_range
-        Init(1, 3, 8, 5);
+        Init(5, 3, 8, 5);
 
         health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
@@ -39,6 +39,7 @@ public class bird_controller : monster
             rb.velocity = Vector3.zero;
             animator.SetBool("attacking",false);
             attacking = false;
+            immune = attacking;
             prev_attacking_time = Time.time;
         }
     }
@@ -80,6 +81,7 @@ public class bird_controller : monster
 
         rb.velocity = dir * speed;
         attacking = true;
+        immune = attacking;
         sound.playBirdSE();
     }
     void OnTriggerStay(Collider collision)

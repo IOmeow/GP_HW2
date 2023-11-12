@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [HideInInspector] public Transform player_trans;
-    [HideInInspector] public Vector3 player_pos => player_trans.position;
+    [HideInInspector] public Vector3 player_pos => player_trans? player_trans.position:Vector3.zero;
 
     [SerializeField] private GameObject shooter_pref;
     [SerializeField] private GameObject bird_pref;

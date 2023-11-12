@@ -62,7 +62,12 @@ public class characterevent : MonoBehaviour
             attack=false;
         }
         }
-     
-    
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    var otherObject = other.gameObject;
+    //    var script = otherObject.GetComponent<goblin_controller>();
+    //    print(script);
+    //}
 }
 

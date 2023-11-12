@@ -1072,6 +1072,7 @@ GameObject:
   - component: {fileID: 4465360868729757002}
   - component: {fileID: 4211603906140863138}
   - component: {fileID: 4211603906140863165}
+  - component: {fileID: 175931909}
   m_Layer: 0
   m_Name: shooterattack
   m_TagString: Untagged
@@ -1131,6 +1132,19 @@ MonoBehaviour:
   bullet_pref: {fileID: 7283863034148499189, guid: d3962b8a3838e124298bae17b7b4d130, type: 3}
   hand: {fileID: 2296059767423653792}
   animator: {fileID: 4211603906140863138}
+--- !u!65 &175931909
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941765273117345776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7398968, y: 2.061625, z: 0.7544422}
+  m_Center: {x: 0.13005161, y: 0.9960804, z: 0.08400679}
 --- !u!1 &4066113897431906535
 GameObject:
   m_ObjectHideFlags: 0

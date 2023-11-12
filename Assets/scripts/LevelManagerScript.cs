@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LevelManagerScript : MonoBehaviour
 {
 
-    private static LevelManagerScript _instance;
+    public static LevelManagerScript Instance;
     [SerializeField]
     private GameObject Player;
 
@@ -78,14 +78,14 @@ public class LevelManagerScript : MonoBehaviour
     }
     void Start()
     {
-        if (_instance)
+        if (Instance)
         {
             Destroy(gameObject);
             return;
         }
 
         Physics.IgnoreLayerCollision(8, 9);
-        _instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
         var tempCanvas = Instantiate(canvas);
         currentCanvasGroup = tempCanvas.GetComponent<CanvasGroup>();
@@ -98,7 +98,8 @@ public class LevelManagerScript : MonoBehaviour
     private void createPlayer()
     {
         var player = Instantiate(Player, new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2),2, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2)), Quaternion.identity);
-        GameManager.Instance.player_trans = player.transform;
+
+        GameManager.Instance.player_trans = player.transform.GetChild(0).transform;
     }
 
 
