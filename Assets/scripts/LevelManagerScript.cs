@@ -239,6 +239,34 @@ public class LevelManagerScript : MonoBehaviour
             NextLevel();
         if (Input.GetKeyDown(KeyCode.M))
             KillEnemy();
+        if (Input.GetKeyDown(KeyCode.B))
+            save();
+        if (Input.GetKeyDown(KeyCode.G))
+            load();
+
+    }
+    private void save()
+    {
+        var hpManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
+        //hpManager.SetHealth(50f);
+        string path = System.IO.Path.GetTempPath()+"/hw2_asdqwezxc";
+        
+        System.IO.File.WriteAllText(path, hpManager.healthAmount+" "+ SceneManager.GetActiveScene().name);
+        //System.IO.File.WriteAllText(path, 50+" "+ SceneManager.GetActiveScene().name);
+        print(path);
+    }
+    private void load()
+    {
+
+        string path = System.IO.Path.GetTempPath() + "/hw2_asdqwezxc";
+        if (System.IO.File.Exists(path))
+        {
+            var hpManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
+            var data = System.IO.File.ReadAllText(path);
+            var hp = int.Parse(data.Split(" ")[0]);
+            hpManager.SetHealth((hp));
+            SceneManager.LoadScene(data.Split(" ")[1]);
+        }
     }
     private void NextLevel()
     {

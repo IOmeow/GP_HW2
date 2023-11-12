@@ -11,11 +11,11 @@ public class goblinhitbox : MonoBehaviour
     private bool hit;
     private float timer;
 
-    HealthManager health;
+    HealthManagerScript health;
     // Start is called before the first frame update
     void Start()
     {
-        health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+        health = GameObject.Find("HealthManager").GetComponent<HealthManagerScript>();
     }
 
     // Update is called once per frame

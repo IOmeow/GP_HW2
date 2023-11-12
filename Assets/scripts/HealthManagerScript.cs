@@ -4,14 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HealthManager : MonoBehaviour
+public class HealthManagerScript : MonoBehaviour
 {
+    public static HealthManagerScript Instance;
     public Image healthBar;
     public float healthAmount = 100f;
     private SoundManager sound;
     // Start is called before the first frame update
     void Start()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         DontDestroyOnLoad(gameObject);
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
@@ -29,15 +36,19 @@ public class HealthManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            TakeDamage(10);
+            Instance.TakeDamage(10);
         }
 
         if(Input.GetKeyDown(KeyCode.X))
         {
-            Heal(5);
+            Instance.Heal(5);
         }
     }
-
+    public void SetHealth(float hp)
+    {
+        healthAmount = hp;
+        Instance.healthBar.fillAmount = Instance.healthAmount / 100f;
+    }
     public void TakeDamage(float damage)
     {
         healthAmount -= damage;
@@ -50,9 +61,9 @@ public class HealthManager : MonoBehaviour
     {
         sound.playCureSE();
         if(healthAmount>=100)return;
-        healthAmount += healingAmount;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+        Instance.healthAmount += healingAmount;
+        Instance.healthAmount = Mathf.Clamp(Instance.healthAmount, 0, 100);
 
-        healthBar.fillAmount = healthAmount / 100f;
+        Instance.healthBar.fillAmount = Instance.healthAmount / 100f;
     }
 }

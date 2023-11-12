@@ -5,12 +5,12 @@ using UnityEngine;
 public class bullet_controller : MonoBehaviour
 {
     public GameObject hiteffect;
-    HealthManager health;
+    HealthManagerScript health;
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, 2);
-        health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+        health = GameObject.Find("HealthManager").GetComponent<HealthManagerScript>();
     }
 
     void OnTriggerEnter(Collider other)

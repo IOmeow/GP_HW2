@@ -6,10 +6,10 @@ public class HealingBlockScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject Player;
-    private HealthManager health;
+    private HealthManagerScript health;
     public float healAmount = 5f;
     void Start(){
-        health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+        health = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
     }
     private void OnCollisionEnter(Collision collision)
     {

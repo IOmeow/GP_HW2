@@ -375,10 +375,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5345369286060463283}
-  - component: {fileID: 5345369286060463282}
+  - component: {fileID: 6814630576058680555}
   m_Layer: 0
   m_Name: HealthManager
-  m_TagString: Untagged
+  m_TagString: HealthManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,7 +399,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5345369286060463282
+--- !u!114 &6814630576058680555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5345369286060463285}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac86265ed200a34da4dd91aceb1c4df, type: 3}
+  m_Script: {fileID: 11500000, guid: b3a3cb52fc3c95f4787cfc9e8891d971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5345369284397451611}

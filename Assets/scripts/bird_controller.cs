@@ -17,7 +17,7 @@ public class bird_controller : monster
     public GameObject hiteffect;
     private float hitcd;
 
-    HealthManager health;
+    HealthManagerScript health;
     SoundManager sound;
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class bird_controller : monster
         // damage, hp, speed, see_range
         Init(5, 3, 8, 5);
 
-        health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
+        health = GameObject.Find("HealthManager").GetComponent<HealthManagerScript>();
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
 
