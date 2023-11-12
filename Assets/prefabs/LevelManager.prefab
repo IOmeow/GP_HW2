@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828948538327313727}
   - component: {fileID: 8764831863820273692}
+  - component: {fileID: 4878701160389700254}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -65,3 +66,18 @@ MonoBehaviour:
   level2_pillarCount: 10
   level3_enemy: {fileID: 3253726156485794920, guid: e5057cb2392c6604b9180c481bcc25bc, type: 3}
   level3_enemyCount: 10
+--- !u!114 &4878701160389700254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352556613159195559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4fb0be02402724cbe789143828d85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseWindow: {fileID: 5227938165440824217, guid: 5ffb3e9ec567a514cb69b753d13a825b, type: 3}
+  ExitButton: {fileID: 0}
+  ContinueButton: {fileID: 0}
