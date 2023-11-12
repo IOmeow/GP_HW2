@@ -13,8 +13,8 @@ public class goblin_controller : monster
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        // damage, hp, speed, see_range
-        Init(3, 5, 2, 5);
+        // damage, hp, speed, see_range, max_hit_count
+        Init(3, 5, 2, 5, 2);
         animator.SetBool("attack",false);
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }

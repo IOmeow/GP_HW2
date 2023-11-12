@@ -22,8 +22,8 @@ public class shooter_controller : monster
     // Start is called before the first frame update
     void Start()
     {
-        // damage, hp, speed, see_range
-        Init(1, 3, 0, 5);
+        // damage, hp, speed, see_range, max_hit_count
+        Init(1, 3, 0, 5, 2);
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
 

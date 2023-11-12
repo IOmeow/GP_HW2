@@ -41,6 +41,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8862964243571687873}
     m_Modifications:
+    - target: {fileID: 745530832739986825, guid: 87dc05fd0d5eaea429fc8f983fcc148d, type: 3}
+      propertyPath: m_TagString
+      value: sword
+      objectReference: {fileID: 0}
     - target: {fileID: 8458438351272298624, guid: 87dc05fd0d5eaea429fc8f983fcc148d, type: 3}
       propertyPath: m_Name
       value: PlayerArmature
@@ -101,6 +105,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4293183786957779420, guid: 87dc05fd0d5eaea429fc8f983fcc148d, type: 3}
   m_PrefabInstance: {fileID: 8862964243663974732}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8117522077504052421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 745530832739986825, guid: 87dc05fd0d5eaea429fc8f983fcc148d, type: 3}
+  m_PrefabInstance: {fileID: 8862964243663974732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2887526807097855868
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117522077504052421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.01, z: 0.9251598}
+  m_Center: {x: 0.00004213213, y: -0.000036244535, z: 0.47415224}
 --- !u!1 &8410395035416502374 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1029119505858679082, guid: 87dc05fd0d5eaea429fc8f983fcc148d, type: 3}

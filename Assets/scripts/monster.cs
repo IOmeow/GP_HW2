@@ -9,13 +9,16 @@ public abstract class monster : MonoBehaviour
     //protected float rotate_ang = 7.2f;  // 轉向player每次轉多少度
     protected float rotate_ratio = 0.2f;    // 轉向player每次轉多少%
     protected int ang_thresh = 5;   // 和玩家夾多少度就視為已經面向玩家
+    protected int max_hit_count;
+    protected int hit_count = 0;
 
     // 初始化 damage, hp, walking speed
-    protected void Init(int d, int h, int s, int r){
+    protected void Init(int d, int h, int s, int r, int m){
         damage = d;
         hp = h;
         speed = s;
         see_range = r;
+        max_hit_count = m;
     }
 
     // 讓怪物面向玩家
@@ -46,5 +49,14 @@ public abstract class monster : MonoBehaviour
     // 計算從現在到面向玩家大概需要多久
     protected float calculate_delay(float rot){
         return Mathf.Log(ang_thresh / rot) / Mathf.Log(1 - rotate_ratio) * Time.fixedDeltaTime;
+    }
+
+    protected void OnTriggerEnter(Collider other){
+        if(other.tag == "sword") hit_count++;
+        if(hit_count >= max_hit_count) be_killed();
+    }
+
+    protected virtual void be_killed(){
+        Destroy(gameObject);
     }
 }

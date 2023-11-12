@@ -26,8 +26,8 @@ public class bird_controller : monster
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         hitcd = 0;
-        // damage, hp, speed, see_range
-        Init(1, 3, 8, 5);
+        // damage, hp, speed, see_range, max_hit_count
+        Init(1, 3, 8, 5, 2);
 
         health = GameObject.Find("HealthManager").GetComponent<HealthManager>();
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
