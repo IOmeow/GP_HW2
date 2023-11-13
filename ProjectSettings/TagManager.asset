@@ -8,6 +8,8 @@ TagManager:
   - CinemachineTarget
   - PlayerWeapon
   - HealthManager
+  - LevelManager
+  - KillCanvas
   layers:
   - Default
   - TransparentFX

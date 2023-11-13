@@ -11,6 +11,12 @@ public class LevelManagerScript : MonoBehaviour
     [SerializeField]
     private GameObject Player;
 
+    //新增
+    private GameObject _healthManager;
+    private GameObject _LevelManager;
+    //
+
+
     [InspectorName("HealingBlock")]
     [SerializeField]
     private GameObject healingBlock;
@@ -91,6 +97,13 @@ public class LevelManagerScript : MonoBehaviour
         currentCanvasGroup = tempCanvas.GetComponent<CanvasGroup>();
         DontDestroyOnLoad(tempCanvas);
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        
+        //新增
+        _healthManager = GameObject.FindGameObjectWithTag("HealthManager");
+        _healthManager.SetActive(false);
+        _LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        _LevelManager.SetActive(false);
+        //
 
         SceneManager_sceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
 
@@ -108,6 +121,25 @@ public class LevelManagerScript : MonoBehaviour
         floor = GameObject.Find("Floor");
         createHealingBox();
         createPlayer();
+
+        //新增
+        if (scene.name == "Menu")
+        {
+        _healthManager.SetActive(false);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        _LevelManager.SetActive(false);
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        Debug.Log("menu");
+        return;
+        }
+        else
+        {
+        _LevelManager.SetActive(true);
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        _healthManager.SetActive(true);
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        //
 
         if (scene.name == "Level1")
         {
@@ -245,29 +277,30 @@ public class LevelManagerScript : MonoBehaviour
             load();
 
     }
+    
+    //改過的
     private void save()
     {
-        var hpManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
         //hpManager.SetHealth(50f);
         string path = System.IO.Path.GetTempPath()+"/hw2_asdqwezxc";
-        
-        System.IO.File.WriteAllText(path, hpManager.healthAmount+" "+ SceneManager.GetActiveScene().name);
-        //System.IO.File.WriteAllText(path, 50+" "+ SceneManager.GetActiveScene().name);
+    
+        System.IO.File.WriteAllText(path, _healthManager.GetComponent<HealthManagerScript>().healthAmount+" "+ SceneManager.GetActiveScene().name);
         print(path);
     }
-    private void load()
+    public void load()
     {
 
         string path = System.IO.Path.GetTempPath() + "/hw2_asdqwezxc";
         if (System.IO.File.Exists(path))
         {
-            var hpManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
-            var data = System.IO.File.ReadAllText(path);
-            var hp = int.Parse(data.Split(" ")[0]);
-            hpManager.SetHealth((hp));
-            SceneManager.LoadScene(data.Split(" ")[1]);
+        var data = System.IO.File.ReadAllText(path);
+        var hp = int.Parse(data.Split(" ")[0]);
+        _healthManager.GetComponent<HealthManagerScript>().SetHealth((hp));
+        SceneManager.LoadScene(data.Split(" ")[1]);
         }
     }
+    //
+    
     private void NextLevel()
     {
         print("NextLevel");

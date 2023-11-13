@@ -12,10 +12,33 @@ public class MenuController : MonoBehaviour
     public CanvasGroup BackButton;
     public CanvasGroup QuitButton;
     public CanvasGroup rule;
+    public GameObject pause;
+    private GameObject _healthManager;
+    private GameObject _LevelManager;
+    public LevelManagerScript LevelManagerScript_;
 
+    void Start()
+    {
+        pause = GameObject.Find("PauseWindow");
+        pause.SetActive(false);
+        _healthManager = GameObject.FindGameObjectWithTag("HealthManager");
+        _LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
+    }
+    
+    void Update()
+    {
+        if(Input.GetKeyDown("space"))
+        {
+            pause.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+    }
+    
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1;
     }
 
     public void About()
@@ -42,11 +65,29 @@ public class MenuController : MonoBehaviour
         BackButton.alpha = 0;
         BackButton.blocksRaycasts = false;
         rule.alpha = 0;
+        Debug.Log("back");
     }
 
     public void QuitGame()
     {
         Application.Quit();
         EditorApplication.isPlaying = false;
+    
+        //_healthManager.SetActive(false);
+        //_LevelManager.SetActive(false);
+    }
+
+    public void backtomenu(){
+        SceneManager.LoadScene(0);
+    }
+
+    public void cancel(){
+        pause.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void load(){
+        LevelManagerScript_.load();
+        Time.timeScale = 1;
     }
 }
