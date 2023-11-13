@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     public CanvasGroup PlayButton;
     public CanvasGroup BackButton;
     public CanvasGroup QuitButton;
+    public CanvasGroup LoadButton;
     public CanvasGroup rule;
     public GameObject pause;
     private GameObject _healthManager;
@@ -50,6 +51,8 @@ public class MenuController : MonoBehaviour
         PlayButton.blocksRaycasts = false;
         QuitButton.alpha = 0;
         QuitButton.blocksRaycasts = false;
+        LoadButton.alpha = 0;
+        LoadButton.blocksRaycasts = false;
         BackButton.alpha = 1;
         BackButton.blocksRaycasts = true;
         rule.alpha = 1;
@@ -63,6 +66,8 @@ public class MenuController : MonoBehaviour
         AboutButton.blocksRaycasts = true;
         QuitButton.alpha = 1;
         QuitButton.blocksRaycasts = true;
+        LoadButton.alpha = 1;
+        LoadButton.blocksRaycasts = true;
         BackButton.alpha = 0;
         BackButton.blocksRaycasts = false;
         rule.alpha = 0;

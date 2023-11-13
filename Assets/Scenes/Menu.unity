@@ -1990,11 +1990,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Move: [W][A][S][D]
 
-    Attack: [O]
+    Attack: [Left-click]
+
+    pause: [SPACE]
 
 
-    Avoid attacks from multiple
-    enemies
+    Avoid
+    attacks from multiple enemies
 
     and kill them!!
 
@@ -2025,7 +2027,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.75
+  m_fontSize: 30.65
   m_fontSizeBase: 36.91
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2892,10 +2894,9 @@ MonoBehaviour:
   PlayButton: {fileID: 739539166}
   BackButton: {fileID: 830140148}
   QuitButton: {fileID: 1174802697}
+  LoadButton: {fileID: 1410624148}
   rule: {fileID: 1241287859}
   pause: {fileID: 0}
-  _healthManager: {fileID: 5345369286060463285, guid: b76847f13f460564da5fc40a9f4a4053, type: 3}
-  _LevelManager: {fileID: 352556613159195559, guid: 04cc13829d21d204584c77861ac7e472, type: 3}
   LevelManagerScript_: {fileID: 8764831863820273692, guid: 04cc13829d21d204584c77861ac7e472, type: 3}
 --- !u!1 &1908382949
 GameObject:
