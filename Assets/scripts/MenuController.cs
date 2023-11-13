@@ -20,7 +20,8 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         pause = GameObject.Find("PauseWindow");
-        pause.SetActive(false);
+        if(pause)
+            pause.SetActive(false);
         _healthManager = GameObject.FindGameObjectWithTag("HealthManager");
         _LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
     }

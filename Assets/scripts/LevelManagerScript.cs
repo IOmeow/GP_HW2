@@ -8,15 +8,11 @@ public class LevelManagerScript : MonoBehaviour
 {
 
     public static LevelManagerScript Instance;
+    //新增
+    private HealthManagerScript _healthManager;
+    #region UnityInspectorItems
     [SerializeField]
     private GameObject Player;
-
-    //新增
-    private GameObject _healthManager;
-    private GameObject _LevelManager;
-    //
-
-
     [InspectorName("HealingBlock")]
     [SerializeField]
     private GameObject healingBlock;
@@ -66,7 +62,7 @@ public class LevelManagerScript : MonoBehaviour
     [InspectorName("Level3 Enemy Count")]
     [SerializeField]
     private int level3_enemyCount;
-
+    #endregion
     private bool fadein = false;
     private bool fadeout = false;
 
@@ -79,7 +75,8 @@ public class LevelManagerScript : MonoBehaviour
     private int killedCount, enemyCount;
     SoundManager sound;
     private GameObject win;
-    void Awake(){
+    void Awake()
+    {
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
     }
     void Start()
@@ -89,7 +86,6 @@ public class LevelManagerScript : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Physics.IgnoreLayerCollision(8, 9);
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -97,20 +93,16 @@ public class LevelManagerScript : MonoBehaviour
         currentCanvasGroup = tempCanvas.GetComponent<CanvasGroup>();
         DontDestroyOnLoad(tempCanvas);
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-        
+
         //新增
-        _healthManager = GameObject.FindGameObjectWithTag("HealthManager");
-        _healthManager.SetActive(false);
-        _LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
-        _LevelManager.SetActive(false);
-        //
+        _healthManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
 
         SceneManager_sceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
 
     }
     private void createPlayer()
     {
-        var player = Instantiate(Player, new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2),2, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2)), Quaternion.identity);
+        var player = Instantiate(Player, new Vector3(Random.Range(-floor.transform.localScale.x / 2, floor.transform.localScale.x / 2), 2, Random.Range(-floor.transform.localScale.z / 2, floor.transform.localScale.z / 2)), Quaternion.identity);
 
         GameManager.Instance.player_trans = player.transform.GetChild(0).transform;
     }
@@ -118,27 +110,26 @@ public class LevelManagerScript : MonoBehaviour
 
     private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        floor = GameObject.Find("Floor");
-        createHealingBox();
-        createPlayer();
 
         //新增
         if (scene.name == "Menu")
         {
-        _healthManager.SetActive(false);
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        _LevelManager.SetActive(false);
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        Debug.Log("menu");
-        return;
+            _healthManager.EnableCanvas(false);
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            return;
         }
         else
         {
-        _LevelManager.SetActive(true);
-        gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        _healthManager.SetActive(true);
-        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            _healthManager.EnableCanvas(true);
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            //_healthManager.SetActive(true);
+            //gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
+
+        floor = GameObject.Find("Floor");
+        createHealingBox();
+        createPlayer();
+
         //
 
         if (scene.name == "Level1")
@@ -256,7 +247,8 @@ public class LevelManagerScript : MonoBehaviour
             }
         }
     }
-    private void initialKill(int count){
+    private void initialKill(int count)
+    {
         enemyCountText = GameObject.Find("enemy_count").GetComponent<Text>();
         killedCountText = GameObject.Find("killed_count").GetComponent<Text>();
         killedCount = 0;
@@ -277,14 +269,14 @@ public class LevelManagerScript : MonoBehaviour
             load();
 
     }
-    
+
     //改過的
     private void save()
     {
         //hpManager.SetHealth(50f);
-        string path = System.IO.Path.GetTempPath()+"/hw2_asdqwezxc";
-    
-        System.IO.File.WriteAllText(path, _healthManager.GetComponent<HealthManagerScript>().healthAmount+" "+ SceneManager.GetActiveScene().name);
+        string path = System.IO.Path.GetTempPath() + "/hw2_asdqwezxc";
+
+        System.IO.File.WriteAllText(path, _healthManager.GetComponent<HealthManagerScript>().healthAmount + " " + SceneManager.GetActiveScene().name);
         print(path);
     }
     public void load()
@@ -293,23 +285,24 @@ public class LevelManagerScript : MonoBehaviour
         string path = System.IO.Path.GetTempPath() + "/hw2_asdqwezxc";
         if (System.IO.File.Exists(path))
         {
-        var data = System.IO.File.ReadAllText(path);
-        var hp = int.Parse(data.Split(" ")[0]);
-        _healthManager.GetComponent<HealthManagerScript>().SetHealth((hp));
-        SceneManager.LoadScene(data.Split(" ")[1]);
+            var data = System.IO.File.ReadAllText(path);
+            var hp = int.Parse(data.Split(" ")[0]);
+            _healthManager.GetComponent<HealthManagerScript>().SetHealth((hp));
+            SceneManager.LoadScene(data.Split(" ")[1]);
         }
     }
     //
-    
+
     private void NextLevel()
     {
         print("NextLevel");
         fadeout = true;
 
     }
-    public void KillEnemy(){    //敵人死亡更新
+    public void KillEnemy()
+    {    //敵人死亡更新
         killedCount++;
         killedCountText.text = killedCount.ToString();
-        if(killedCount==enemyCount)NextLevel();
+        if (killedCount == enemyCount) NextLevel();
     }
 }

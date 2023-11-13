@@ -11,9 +11,9 @@ public class HealthManagerScript : MonoBehaviour
     public float healthAmount = 100f;
     private SoundManager sound;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        if (Instance)
+        if (Instance!=null)
         {
             Destroy(gameObject);
             return;
@@ -65,5 +65,9 @@ public class HealthManagerScript : MonoBehaviour
         Instance.healthAmount = Mathf.Clamp(Instance.healthAmount, 0, 100);
 
         Instance.healthBar.fillAmount = Instance.healthAmount / 100f;
+    }
+    public void EnableCanvas(bool flag)
+    {
+        gameObject.transform.GetChild(0).gameObject.SetActive(flag);
     }
 }
