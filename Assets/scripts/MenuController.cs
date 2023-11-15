@@ -78,7 +78,7 @@ public class MenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        EditorApplication.isPlaying = false;
+        //EditorApplication.isPlaying = false;
     
         //_healthManager.SetActive(false);
         //_LevelManager.SetActive(false);

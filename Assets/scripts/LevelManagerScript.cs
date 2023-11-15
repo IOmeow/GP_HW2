@@ -114,6 +114,7 @@ public class LevelManagerScript : MonoBehaviour
         {
             _healthManager.EnableCanvas(false);
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            sound.playBGM(0);
             return;
         }
         else
@@ -255,14 +256,14 @@ public class LevelManagerScript : MonoBehaviour
     private void Update()
     {
         fadeinout();
-        if (Input.GetKeyDown(KeyCode.N))
-            NextLevel();
-        if (Input.GetKeyDown(KeyCode.M))
-            KillEnemy();
-        if (Input.GetKeyDown(KeyCode.B))
-            save();
-        if (Input.GetKeyDown(KeyCode.G))
-            load();
+        //if (Input.GetKeyDown(KeyCode.N))
+            //NextLevel();
+        //if (Input.GetKeyDown(KeyCode.M))
+            //KillEnemy();
+        //if (Input.GetKeyDown(KeyCode.B))
+            //save();
+        //if (Input.GetKeyDown(KeyCode.G))
+            //load();
 
     }
 

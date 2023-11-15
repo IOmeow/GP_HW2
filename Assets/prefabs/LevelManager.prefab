@@ -51,7 +51,7 @@ MonoBehaviour:
   canvas: {fileID: 3791515044962551505, guid: 2d389a443657b394ba6d83b5b34137d4, type: 3}
   fadeOutTime: 1
   level1_enemy: {fileID: 5998034229637603525, guid: 35b3fc8b3812bcc4a9dea7c75c870047, type: 3}
-  level1_enemyCount: 10
+  level1_enemyCount: 5
   level1_rocks:
   - {fileID: 1000012968262300, guid: 30b99e7dc1382e346a7f9789de00de5e, type: 3}
   - {fileID: 1000010869019282, guid: d7ba4fe833670a140b9b6085652f0e26, type: 3}
@@ -61,11 +61,11 @@ MonoBehaviour:
   - {fileID: 1000011143488790, guid: a649302f8407dd9469e2c5b67b4a0674, type: 3}
   level1_rockCount: 0
   level2_enemy: {fileID: 3941765273117345776, guid: 54cea88e18ccf1c42b54446e735ef9be, type: 3}
-  level2_enemyCount: 20
+  level2_enemyCount: 5
   level2_pillar: {fileID: 1660479392756500, guid: 9848e4b3deb970743a6ea02dcfe6159e, type: 3}
   level2_pillarCount: 0
   level3_enemy: {fileID: 3253726156485794920, guid: e5057cb2392c6604b9180c481bcc25bc, type: 3}
-  level3_enemyCount: 25
+  level3_enemyCount: 5
 --- !u!1001 &1940644783491959443
 PrefabInstance:
   m_ObjectHideFlags: 0
