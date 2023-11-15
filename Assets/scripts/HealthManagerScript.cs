@@ -30,7 +30,7 @@ public class HealthManagerScript : MonoBehaviour
         {
             // Application.LoadLevel(Application.loadedLevel);
             sound.playDieSE();
-            healthAmount = 100;
+            SetHealth(100f);
             SceneManager.LoadScene("Level1");
         }
 

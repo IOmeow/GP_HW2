@@ -78,6 +78,7 @@ public class LevelManagerScript : MonoBehaviour
     void Awake()
     {
         sound = GameObject.Find("Sound").GetComponent<SoundManager>();
+        _healthManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
     }
     void Start()
     {
@@ -93,9 +94,6 @@ public class LevelManagerScript : MonoBehaviour
         currentCanvasGroup = tempCanvas.GetComponent<CanvasGroup>();
         DontDestroyOnLoad(tempCanvas);
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-
-        //新增
-        _healthManager = GameObject.FindGameObjectWithTag("HealthManager").GetComponent<HealthManagerScript>();
 
         SceneManager_sceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
 
@@ -146,7 +144,6 @@ public class LevelManagerScript : MonoBehaviour
             createPillars();
             createEnemies(level2_enemy, level2_enemyCount);
             initialKill(level2_enemyCount);
-            sound.playTeleportSE();
             sound.playBGM(2);
         }
         else if (scene.name == "Level3")
@@ -154,7 +151,6 @@ public class LevelManagerScript : MonoBehaviour
             currentLevel = 3;
             createEnemies(level3_enemy, level3_enemyCount);
             initialKill(level3_enemyCount);
-            sound.playTeleportSE();
             sound.playBGM(3);
 
             win = GameObject.Find("Win");
@@ -271,12 +267,12 @@ public class LevelManagerScript : MonoBehaviour
     }
 
     //改過的
-    private void save()
+    public void save()
     {
         //hpManager.SetHealth(50f);
         string path = System.IO.Path.GetTempPath() + "/hw2_asdqwezxc";
 
-        System.IO.File.WriteAllText(path, _healthManager.GetComponent<HealthManagerScript>().healthAmount + " " + SceneManager.GetActiveScene().name);
+        System.IO.File.WriteAllText(path, _healthManager.healthAmount + " " + SceneManager.GetActiveScene().name);
         print(path);
     }
     public void load()
@@ -287,8 +283,9 @@ public class LevelManagerScript : MonoBehaviour
         {
             var data = System.IO.File.ReadAllText(path);
             var hp = int.Parse(data.Split(" ")[0]);
-            _healthManager.GetComponent<HealthManagerScript>().SetHealth((hp));
+            _healthManager.SetHealth((hp));
             SceneManager.LoadScene(data.Split(" ")[1]);
+            killedCountText.text = "0";
         }
     }
     //
@@ -297,11 +294,13 @@ public class LevelManagerScript : MonoBehaviour
     {
         print("NextLevel");
         fadeout = true;
+        if(currentLevel!=3)sound.playTeleportSE();
 
     }
     public void KillEnemy()
     {    //敵人死亡更新
         killedCount++;
+        killedCountText = GameObject.Find("killed_count").GetComponent<Text>();
         killedCountText.text = killedCount.ToString();
         if (killedCount == enemyCount) NextLevel();
     }

@@ -201,7 +201,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &60505505
 RectTransform:
@@ -1992,7 +1992,7 @@ MonoBehaviour:
 
     Attack: [Left-click]
 
-    pause: [SPACE]
+    pause: [ESC]
 
 
     Avoid
@@ -2414,6 +2414,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5345369284558693573, guid: b76847f13f460564da5fc40a9f4a4053, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345369284558693573, guid: b76847f13f460564da5fc40a9f4a4053, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5345369286060463283, guid: b76847f13f460564da5fc40a9f4a4053, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2897,7 +2905,6 @@ MonoBehaviour:
   LoadButton: {fileID: 1410624148}
   rule: {fileID: 1241287859}
   pause: {fileID: 0}
-  LevelManagerScript_: {fileID: 8764831863820273692, guid: 04cc13829d21d204584c77861ac7e472, type: 3}
 --- !u!1 &1908382949
 GameObject:
   m_ObjectHideFlags: 0

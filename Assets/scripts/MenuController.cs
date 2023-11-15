@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour
     public GameObject pause;
     private GameObject _healthManager;
     private GameObject _LevelManager;
-    public LevelManagerScript LevelManagerScript_;
+    private LevelManagerScript LevelManagerScript_;
 
     void Start()
     {
@@ -25,11 +25,12 @@ public class MenuController : MonoBehaviour
             pause.SetActive(false);
         _healthManager = GameObject.FindGameObjectWithTag("HealthManager");
         _LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        LevelManagerScript_ = _LevelManager.GetComponent<LevelManagerScript>();
     }
     
     void Update()
     {
-        if(Input.GetKeyDown("space"))
+        if(Input.GetKeyDown("escape"))
         {
             pause.SetActive(true);
             Time.timeScale = 0;
@@ -84,6 +85,8 @@ public class MenuController : MonoBehaviour
     }
 
     public void backtomenu(){
+        LevelManagerScript_ = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManagerScript>();
+        LevelManagerScript_.save();
         SceneManager.LoadScene(0);
     }
 

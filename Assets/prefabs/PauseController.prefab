@@ -48,5 +48,7 @@ MonoBehaviour:
   PlayButton: {fileID: 0}
   BackButton: {fileID: 0}
   QuitButton: {fileID: 0}
+  LoadButton: {fileID: 0}
   rule: {fileID: 0}
   pause: {fileID: 0}
+  LevelManagerScript_: {fileID: 0}
